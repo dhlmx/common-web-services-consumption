@@ -1,0 +1,71 @@
+<div *ngIf="aNumber; else aNumberLoad">
+  <p style="font-weight: bold;">RxJS: of&lt;number&gt;</p>
+  A number: {{ aNumber }}
+</div>
+
+<div *ngIf="anArray.length; else anArrayLoad">
+  <p style="font-weight: bold;">RxJS: of&lt;number[]&gt;</p>
+  An array: {{ anArray | json }}
+</div>
+
+<div *ngIf="tenStrings.length; else tenStringsLoad">
+  <ol>
+    <p style="font-weight: bold;">RxJS: from&lt;string[]&gt;</p>
+    Ten strings:
+    <li *ngFor="let eachString of tenStrings">&nbsp;{{ eachString }}</li>
+  </ol>
+</div>
+
+<div *ngIf="fourArrays.length; else fourArraysLoad">
+  <ol>
+    <p style="font-weight: bold;">RxJS: from&lt;number[][]&gt;</p>
+    Four arrays:
+    <li *ngFor="let eachArray of fourArrays">&nbsp;{{ eachArray | json }}</li>
+  </ol>
+</div>
+
+<div *ngIf="fourObservables.length; else fourObservablesLoad">
+  <ol>
+    <p style="font-weight: bold;">RxJS: from&lt;Observable&lt;number[]&gt;[]&gt;</p>
+    Four observables:
+    <li *ngFor="let eachObservable of fourObservables">&nbsp;{{ eachObservable | json }}</li>
+  </ol>
+</div>
+
+<ng-template #aNumberLoad>
+  <div *ngIf="aNumber === 0; else errorTemplate" style="color: green;">
+    Loading a Number...
+  </div>
+</ng-template>
+
+<ng-template #anArrayLoad>
+  <div style="color: green;">
+    Loading an Array...
+  </div>
+</ng-template>
+
+<ng-template #tenStringsLoad>
+  <div style="color: green;">
+    Loading Ten Strings...
+  </div>
+</ng-template>
+
+<ng-template #fourArraysLoad>
+  <div style="color: green;">
+    Loading Four Arrays...
+  </div>
+</ng-template>
+
+<ng-template #fourObservablesLoad>
+  <div style="color: green;">
+    Loading Four Observables...
+  </div>
+</ng-template>
+
+
+<ng-template #errorTemplate>
+  <div>
+    <h6 style="color: maroon;">Error</h6>
+    <p>Some number: {{ aNumber | json }}</p>
+  </div>
+</ng-template>
